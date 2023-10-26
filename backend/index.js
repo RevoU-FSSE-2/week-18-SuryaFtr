@@ -113,14 +113,8 @@ app.post("/refresh", async (req, res) => {
     res.json(responseToken);
 });
 
-// asking a key to requesting new reset password
-app.post("/requestreset", controller.passwordResetRequest);
-
-//  processing new reset password
-app.post("/reset", controller.passwordReset);
-
 // feature CRUD for todolist 
-app.use("/todolist", todolistLimiter, todolistrouter);
+app.use("/task", todolistLimiter, todolistrouter);
 
 const server = app.listen(port, () => {
     console.log('Example app listening on port ' + port);

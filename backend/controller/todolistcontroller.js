@@ -1,11 +1,12 @@
 const { Todolist } = require("../models/TodolistMongo");
 const { ObjectId } = require("mongodb")
 
-const dateNow = new Date("<dd-mm-YYYYTHH:MM:ss>");
+const dateNow = new Date();
+const upDateNow = new Date();
 
 exports.createTodolist = async (req, res) => {
-    const { title, content, priority, dueDates } = req.body;
-    const todolist = await Todolist.create({ title, content, priority, dueDates, status: "Not Started", createdAt: dateNow, updatedAt: dateNow });
+    const { task, description, priority, dueDates } = req.body;
+    const todolist = await Todolist.create({ task, description, priority, dueDates, status: "Not Started", createdAt: dateNow, updatedAt: dateNow });
     todolist.author = req.user;
     await todolist.save();
     res.status(201).json(todolist);
@@ -21,13 +22,13 @@ exports.getTodolists = async (req, res) => {
 }
 
 exports.updateTodolist = async (req, res) => {
-    const { title, content, priority, dueDates, status } = req.body;
+    const { task, description, priority, dueDates } = req.body;
     const { id } = req.params;
     const filter = await Todolist.findOne({ _id: new ObjectId(id) });
 
     if (filter) {
-        const update = await Todolist.updateOne({ title, content, priority, dueDates, status, updatedAt: dateNow });
-        res.status(201).json(update);
+        const update = await Todolist.updateOne({ task, description, priority, dueDates, updatedAt: upDateNow });
+        res.status(201).json(filter);
     } else {
         res.status(401).json({ error: "Error occured during update process" });
         return;
@@ -36,11 +37,11 @@ exports.updateTodolist = async (req, res) => {
 
 exports.deleteTodolist = async (req, res) => {
     const { id } = req.params;
-    const remove = await Todolist.deleteOne({ _id: new ObjectId(id) });
-    res.status(201).json(remove);
+    const filter = await Todolist.findOne({ _id: new ObjectId(id) });
 
     if (filter) {
-        const remove = await Todolist.deleteOne({ _id: new ObjectId(id) });
+        await Todolist.deleteOne({ _id: new ObjectId(id) });
+        res.status(201).json({ message: "Task is successfully deleted" })
     } else {
         res.status(401).json({ error: "Error occured during delete process" });
         return;
