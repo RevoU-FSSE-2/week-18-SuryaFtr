@@ -1,7 +1,6 @@
 const { Todolist } = require("../models/TodolistMongo");
 
 const dateNow = new Date();
-const upDateNow = new Date();
 
 exports.createTodolist = async (req, res) => {
     const { task, description, priority } = req.body;

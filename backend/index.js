@@ -48,6 +48,18 @@ app.get('/', (req, res) => {
 // register new user
 app.post("/register", async (req, res) => {
     const { username, email, password } = req.body;
+    const checkUsername = await User.get({ username })
+    const checkEmail = await User.get({ email })
+
+    if (checkUsername) {
+        res.status(400).json({ error: "Username already exists" });
+        return;
+    }
+    if (checkEmail) {
+        res.status(400).json({ error: "Email already registered" });
+        return;
+    }
+
     const user = await User.create({ username, email, password });
     const userPerm = await PermissionMongo.findOne({ name: "user" });
     await attachPerm(user, userPerm);
