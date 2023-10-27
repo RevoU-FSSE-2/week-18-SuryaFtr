@@ -1,0 +1,29 @@
+#root {
+  margin: 0 auto;
+}
+
+.link {
+  color: #1677ff;
+}
+
+.item-right {
+  text-align: right;
+}
+
+.item-center {
+  text-align: center;
+}
+
+.error-message {
+  color: #ff4d4f;
+}
+
+.button-update {
+  background-color: #ffc400;
+  color: #000;
+}
+
+.button-delete {
+  background-color: #ff4d4f;
+  color: #000;
+}
