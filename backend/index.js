@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URL)
 
 app.use((req, res, next) => {
     const allowedOrigins = [
-        'https://week-17-suryafaturohman.web.app', 'http://localhost:5173'
+        'https://radiant-phoenix-6a6fc0.netlify.app', 'http://localhost:5173'
     ];
     const origin = req.headers.origin;
 
@@ -29,7 +29,7 @@ app.use((req, res, next) => {
     if (allowedOrigins.includes(origin)) {
         res.header('Access-Control-Allow-Origin', origin);
 
-        if (origin === 'https://week-17-suryafaturohman.web.app' || 'http://localhost:5173') {
+        if (origin === 'https://radiant-phoenix-6a6fc0.netlify.app' || 'http://localhost:5173') {
             res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
         }
 
