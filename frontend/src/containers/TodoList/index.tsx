@@ -1,4 +1,4 @@
-import { ColumnsType } from 'antd/es/table';
+import { ColumnsType, TableProps } from 'antd/es/table';
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -69,12 +69,6 @@ const TodoList = () => {
 
     const columns: ColumnsType<GetTodoList> = [
         {
-            title: 'ID',
-            dataIndex: '_id',
-            key: '_id',
-            render: (text) => text || 'N/A',
-        },
-        {
             title: 'Task',
             dataIndex: 'task',
             key: 'task',
@@ -91,12 +85,42 @@ const TodoList = () => {
             dataIndex: 'priority',
             key: 'priority',
             render: (text) => text || 'N/A',
+            filters: [
+                {
+                    text: 'High',
+                    value: 'high',
+                },
+                {
+                    text: 'Medium',
+                    value: 'medium',
+                },
+                {
+                    text: 'Low',
+                    value: 'low',
+                }
+            ],
+            filterMode: 'tree',
+            filterSearch: true,
+            onFilter: (value: string, record) => record.priority.includes(value),
         },
         {
             title: 'Status',
             dataIndex: 'status',
             key: 'status',
             render: (text) => text || 'N/A',
+            filters: [
+                {
+                    text: 'Done',
+                    value: 'done',
+                },
+                {
+                    text: 'Pending',
+                    value: 'pending',
+                }
+            ],
+            filterMode: 'tree',
+            filterSearch: true,
+            onFilter: (value: string, record) => record.status.includes(value),
         },
         {
             title: 'Action',
@@ -105,7 +129,7 @@ const TodoList = () => {
                 <>
                     <Button className={'button-update'} type={'primary'} color={'yellow'}
                         onClick={() => navigate(`/update-task/${record._id}`)}
-                    >Edit</Button>
+                    >Update</Button>
                     {' '}
                     <Button className={'button-delete'} type={'primary'}
                         onClick={() => {
@@ -118,13 +142,15 @@ const TodoList = () => {
             ),
         },
     ];
-
+    const onChange: TableProps<GetTodoList>['onChange'] = (pagination, filters, sorter, extra) => {
+        console.log('params', pagination, filters, sorter, extra);
+    };
     return (
         <>
             <div className='item-center'>
                 <Button type={'primary'} onClick={() => navigate('/create-task')}>Create Task</Button>
             </div>
-            <TaskList columns={columns} data={todolist} />
+            <TaskList columns={columns} data={todolist} onChange={onChange} />
         </>
     )
 }

@@ -27,7 +27,7 @@ const Register: React.FC = () => {
                 alert("Register Success!")
                 window.location.replace('/login')
             } else {
-                alert(response.errors)
+                alert(response.error)
             }
 
         } catch (error) {

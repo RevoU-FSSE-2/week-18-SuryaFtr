@@ -26,7 +26,7 @@ const Login: React.FC = () => {
                 localStorage.setItem('tokenRefresh', tokenRefresh)
                 window.location.replace('/')
             } else {
-                alert(response.errors)
+                alert(response.error)
             }
         }
         catch (error) {
