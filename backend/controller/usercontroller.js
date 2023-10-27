@@ -13,11 +13,11 @@ exports.login_session = async (req, res) => {
   const { accesToken, expireAt, refreshToken, refreshExpireAt } = User.generateToken(user);
   res.cookie('accesToken', accesToken, { httpOnly: true, expire: expireAt });
   res.cookie('refreshToken', refreshToken, { httpOnly: true, expire: refreshExpireAt });
-  res.json();
+  res.json({ message: "You Have Successfully Login!" });
 };
 
 exports.logout_session = async (req, res) => {
   res.clearCookie('accesToken');
   res.clearCookie('refreshToken');
-  res.json();
+  res.json({ message: "You Has Logout!" });
 };

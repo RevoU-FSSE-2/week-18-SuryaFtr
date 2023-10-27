@@ -1,12 +1,11 @@
 const { Todolist } = require("../models/TodolistMongo");
-const { ObjectId } = require("mongodb")
 
 const dateNow = new Date();
 const upDateNow = new Date();
 
 exports.createTodolist = async (req, res) => {
-    const { task, description, priority, dueDates } = req.body;
-    const todolist = await Todolist.create({ task, description, priority, dueDates, status: "Not Started", createdAt: dateNow, updatedAt: dateNow });
+    const { task, description, priority } = req.body;
+    const todolist = await Todolist.create({ task, description, priority, status: "pending", createdAt: dateNow, updatedAt: dateNow });
     todolist.author = req.user;
     await todolist.save();
     res.status(201).json(todolist);
@@ -14,6 +13,7 @@ exports.createTodolist = async (req, res) => {
 
 exports.getTodolists = async (req, res) => {
     let query = { author: req.user };
+
     if (req.user.is_superuser()) {
         query = {};
     }
@@ -21,14 +21,25 @@ exports.getTodolists = async (req, res) => {
     res.status(200).json(todolists);
 }
 
-exports.updateTodolist = async (req, res) => {
-    const { task, description, priority, dueDates } = req.body;
+exports.getTodolistsById = async (req, res) => {
     const { id } = req.params;
-    const filter = await Todolist.findOne({ _id: new ObjectId(id) });
+
+    const getById = await Todolist.findOne({ _id: id });
+    res.status(200).json(getById);
+}
+
+exports.updateTodolist = async (req, res) => {
+    const { task, description, priority, status } = req.body;
+    const { id } = req.params;
+    const filter = await Todolist.findOne({ _id: id });
+
+    const UpdateRequest = {
+        task, description, priority, status, updatedAt: new Date()
+    }
 
     if (filter) {
-        const update = await Todolist.updateOne({ task, description, priority, dueDates, updatedAt: upDateNow });
-        res.status(201).json(filter);
+        const update = await Todolist.updateOne({ _id: id }, { $set: UpdateRequest });
+        res.status(201).json(update);
     } else {
         res.status(401).json({ error: "Error occured during update process" });
         return;
@@ -37,10 +48,10 @@ exports.updateTodolist = async (req, res) => {
 
 exports.deleteTodolist = async (req, res) => {
     const { id } = req.params;
-    const filter = await Todolist.findOne({ _id: new ObjectId(id) });
+    const filter = await Todolist.findOne({ _id: id });
 
     if (filter) {
-        await Todolist.deleteOne({ _id: new ObjectId(id) });
+        await Todolist.deleteOne({ _id: id });
         res.status(201).json({ message: "Task is successfully deleted" })
     } else {
         res.status(401).json({ error: "Error occured during delete process" });
