@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "2a3410d7-dd7d-4d62-b6a1-2077dd3c1368",
+		"name": "To Do List API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29346622"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Regiter User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"email\": \"admin@email.com\",\r\n    \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login/Logout",
+			"item": [
+				{
+					"name": "Login without session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"asep\",\r\n    \"password\": \"asep123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Login with session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/login_session"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"asep\",\r\n    \"password\": \"asep123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/logout_session"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Permission",
+			"item": [
+				{
+					"name": "Attach Permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"permission\":\"superuser\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/attachperm"
+					},
+					"response": []
+				},
+				{
+					"name": "Detach Permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"permission\":\"superuser\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/detachperm"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check User Info",
+			"item": [
+				{
+					"name": "User Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/admin"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Refresh Token",
+			"item": [
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\":\"refreshToken\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/refresh"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "To Do List",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"task\":\"task name\",\r\n    \"description\":\"task decription\",\r\n    \"priority\":\"high\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/task"
+					},
+					"response": []
+				},
+				{
+					"name": "View Task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/task"
+					},
+					"response": []
+				},
+				{
+					"name": "View Task By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/task/653bbcc8dc2702f2bf9f97ad"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"task\":\"task name 21323\",\r\n    \"description\":\"task decription 312312\",\r\n    \"priority\":\"low\",\r\n    \"status\":\"done\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/task/653bbcc8dc2702f2bf9f97ad"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/task/653926921e34519bab9d5d98"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Server Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}

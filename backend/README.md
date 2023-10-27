@@ -1,4 +1,4 @@
-# Fullstack Integration - JSON Web Token(JWT), Authentication and Authorization
+# To Do List App API - JSON Web Token(JWT), Authentication and Authorization and CRUD Feature
 
 ## Introduction
 
@@ -9,11 +9,9 @@ Which is have this feature on list below :
 - Access, refresh token and expire time.
 - Login session, cookies access, refresh with max age expire of jwt.
 - Logout session and clearing cookies
-- Request reset password and reset password.
 - User roles based authorization.
-- Post article.
+- CRUD Operations for To Do List App .
 - Limitation data fetching, for every user.
-- Limitation login for request.
 
 ## Content
 * Introduction
@@ -108,23 +106,19 @@ Routes Endpoint
 
     ``User : GET('/user') -> is for checking user info role``
 
-    ``Super user : GET('/admin') -> is for checking super user info role``
+    ``Admin : GET('/admin') -> is for checking admin info role``
 
 4. Refresh Token 
 
     ``Refresh Token : POST('/refresh') -> is for re-new login token session, without login manually``
 
-5. Request & Reset Password
-
-    ``Request Reset Password : POST('/requestreset') -> is for asking a key to requesting new reset password``
-
-    ``Reset Password : POST('/reset') -> is for processing new reset password``
-
-6.  To Do List 
+5.  To Do List 
 
     ``Add ToDoList : POST('/posting') -> is for creating new ToDoList data``
 
     ``View ToDoList : GET('/posting') -> is for view ToDoList data``
+
+     ``View ToDoList By Id: GET('/posting/:id') -> is for view ToDoList data``
 
     ``Update ToDoList : PUT('/posting/:id') -> is for update ToDoList data``
 

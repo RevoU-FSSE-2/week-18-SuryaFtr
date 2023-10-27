@@ -1,14 +1,14 @@
-# Simple CRUD App + Register & Login
+# Simple To Do List App + Register & Login Feature
 ## Introduction
 
-Simple CRUD Category App + Register & Login is a website application that provide users with simple registration user and login user for access CRUD for Category App. It's already provides unit testing file in it.
+Simple To Do List App + Register & Login Feature is a website application that provide users with simple registration user and login user for access CRUD for To Do List App feature. 
 
 ## Content
 * Introduction
 * Content
 * Requirement Tech
 * Getting Started
-* Dependencies
+* Project Explaination
 
 ## Requirement Tech
 
@@ -23,7 +23,7 @@ Simple CRUD Category App + Register & Login is a website application that provid
 
 ### 1. Prerequisites
 
-Firts, make sure you already have:
+First, make sure you already have:
 
 - Git installed.
 - Node.js and npm installed.
@@ -54,24 +54,5 @@ To run project, type on command prompt :
 npm run dev
 ```
 
-## Dependencies
+## Project Explaination
 
-1. **"antd": "^5.9.0"**
-2. **"formik": "^2.4.4"** 
-3. **"react": "^18.2.0",**
-4. **"react-dom": "^18.2.0"**
-5. **"yup": "^1.2.0"**
-6. **"localforage": "^1.10.0"**
-7. **"match-sorter": "^6.3.1"**
-8. **"react-router-dom": "^6.16.0"**
-9. **"sort-by": "^1.2.0"**
-
-For Unit Testing (Install on devDepedencies) : 
-
-10. jest 
-11. @babel/preset-env 
-12. @babel/preset-react
-13. @babel/preset-typescript 
-14. @testing-library/react 
-15. @testing-library/jest-dom 
-16. jest-environment-jsdom
