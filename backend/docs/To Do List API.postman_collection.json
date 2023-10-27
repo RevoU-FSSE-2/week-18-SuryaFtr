@@ -285,7 +285,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:5000",
+			"value": "https://thoughtful-pear-knickers.cyclic.app",
 			"type": "string"
 		}
 	]
