@@ -44,4 +44,4 @@ export interface GetTodoList {
     author: String;
 }
 
-export const BaseUrl = "http://localhost:5000";
+export const BaseUrl = "https://thoughtful-pear-knickers.cyclic.app";
