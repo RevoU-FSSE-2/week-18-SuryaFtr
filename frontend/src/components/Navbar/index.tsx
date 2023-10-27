@@ -19,7 +19,7 @@ const Navbar = () => {
         if (e.key == '/login') {
             localStorage.removeItem('accesToken');
             localStorage.removeItem('tokenRefresh');
-            window.location.replace(e.key)
+            window.location.replace('/')
         }
         navigate(e.key)
     };

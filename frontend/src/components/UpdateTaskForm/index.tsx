@@ -91,7 +91,7 @@ const UpdateTaskForm = ({ onSubmit, task }: Props) => {
             </div>
             <Divider />
             <div className={"item-right"}>
-                <Button type={'primary'} htmlType={"submit"}>Create</Button>
+                <Button type={'primary'} htmlType={"submit"}>Update</Button>
             </div>
         </form>
     )
